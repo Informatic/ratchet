@@ -1441,6 +1441,10 @@ int luaopen_ratchet (lua_State *L)
 	luaL_requiref (L, "ratchet.timerfd", luaopen_ratchet_timerfd, 0);
 	lua_setfield (L, -2, "timerfd");
 #endif
+#if HAVE_SERIAL
+	luaL_requiref (L, "ratchet.serial", luaopen_ratchet_serial, 0);
+	lua_setfield (L, -2, "serial");
+#endif
 
 	lua_pushstring (L, PACKAGE_VERSION);
 	lua_setfield (L, -2, "version");

@@ -14,6 +14,10 @@ if HAVE_TIMERFD
 allsources += timerfd.c
 endif
 
+if HAVE_SERIAL
+allsources += serial.c
+endif
+
 if HAVE_OPENSSL
 allsources += ssl.c
 endif

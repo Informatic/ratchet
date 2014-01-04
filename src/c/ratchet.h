@@ -12,6 +12,7 @@ int luaopen_ratchet_error (lua_State *L);
 int luaopen_ratchet_socket (lua_State *L);
 int luaopen_ratchet_ssl (lua_State *L);
 int luaopen_ratchet_timerfd (lua_State *L);
+int luaopen_ratchet_serial (lua_State *L);
 int luaopen_ratchet_zmqsocket (lua_State *L);
 int luaopen_ratchet_dns (lua_State *L);
 int luaopen_ratchet_dns_hosts (lua_State *L);

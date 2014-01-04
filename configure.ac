@@ -45,6 +45,12 @@ AC_ARG_ENABLE([timerfd], [AS_HELP_STRING([--disable-timerfd],
 	      [use_timerfd="$enableval"], [use_timerfd=yes])
 
 #####################
+# Configure options: --disable-serial[=no]
+AC_ARG_ENABLE([serial], [AS_HELP_STRING([--disable-serial],
+                                     [disable usage of serial support (default no)])],
+	      [use_serial="$enableval"], [use_serial=yes])
+
+#####################
 # Configure options: --disable-openssl[=no]
 AC_ARG_ENABLE([openssl], [AS_HELP_STRING([--disable-openssl],
 	                                 [disable usage of openssl libraries (default no)])],
@@ -155,6 +161,15 @@ else
 	AC_MSG_NOTICE([timerfd will not be included in the ratchet library.])
 fi
 AM_CONDITIONAL([HAVE_TIMERFD], [test "x${have_timerfd}" = "xyes"])
+
+# serialio
+AC_DEFINE([HAVE_SERIAL], [0], [Define to 1 if you have serial support.])
+if test "x${use_serial}" != "xno"; then
+	AC_DEFINE([HAVE_SERIAL], [1])
+else
+    AC_MSG_NOTICE([serial will not be included in the ratchet library.])
+fi
+AM_CONDITIONAL([HAVE_SERIAL], [test "x${use_serial}" = "xyes"])
 
 # socket
 AC_DEFINE([HAVE_SOCKET], [0], [Define to 1 if you have the BSD socket system call suite.])
